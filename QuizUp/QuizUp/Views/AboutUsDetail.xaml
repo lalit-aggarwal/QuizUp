@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizUp.Views.AboutUsDetail"
+             xmlns:circleimage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             BindingContext="{Binding AboutUsDetailViewModel, Source={StaticResource ViewModelLocator}}">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Row="1" Source="quizup.png" HeightRequest="200" WidthRequest="200" VerticalOptions="Center"/>
+                <StackLayout Grid.Row="3">
+                    <Label Grid.Row="3" Text="QuizUp! v1.0" Style="{StaticResource LargeLableStyle}"/>
+                    <Label Text="Evaluate Yourself" Style="{StaticResource SmallLableStyle}" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="5" VerticalOptions="End">
+                    <Label HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bababa" VerticalOptions="End"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="End">
+                        <Label Text="Designed and Created By: " Style="{StaticResource SmallLableStyle}"/>
+                        <circleimage:CircleImage Source="lalit.png" HeightRequest="40" WidthRequest="40" Aspect="AspectFit"/>
+                    </StackLayout>
+                    <Label Text="Made in India" Style="{StaticResource SmallLableStyle}" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

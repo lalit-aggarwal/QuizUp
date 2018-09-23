@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:circleimage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="QuizUp.Views.MyProfileDetail"
+             BindingContext="{Binding MyProfileDetailViewModel, Source={StaticResource ViewModelLocator}}">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="10"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <circleimage:CircleImage Grid.Column="0" Source="{Binding User.ProfileImage}" HeightRequest="100" Aspect="AspectFit"/>
+                    <Label Grid.Row="1" Text="Full Name" FontSize="Small"/>
+                    <Entry Grid.Row="2" Placeholder="Full Name" Style="{StaticResource LoginEntryStyle}" Text="{Binding User.Name}"/>
+                    <Label Grid.Row="3" Text="Username" FontSize="Small"/>
+                    <Entry Grid.Row="4" Placeholder="Username" Style="{StaticResource LoginEntryStyle}" Text="{Binding User.Username}"/>
+                    <StackLayout Grid.Row="5" Orientation="Horizontal">
+                        <Switch IsToggled="{Binding IsPasswordChange}"/>
+                        <Label Text="Change Password" FontSize="Small"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="7" IsVisible="{Binding IsPasswordChange}">
+                        <Label Text="New Password" FontSize="Small"/>
+                        <Entry Placeholder="New Password" Style="{StaticResource LoginEntryStyle}" Text="{Binding NewPassword}" IsPassword="True"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Grid.Row="8" HorizontalOptions="End">
+                        <Button Text="Update" Style="{StaticResource LoginButtonStyle}" Command="{Binding UpdateCommand}"/>
+                        <Button Text="Cancel" Style="{StaticResource ResetButtonStyle}" Command="{Binding CancelUpdateCommand}"/>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

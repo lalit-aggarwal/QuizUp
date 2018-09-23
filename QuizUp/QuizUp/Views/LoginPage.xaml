@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizUp.Views.LoginPage" Title="Login"
+             BindingContext="{Binding LoginViewModel, Source={StaticResource ViewModelLocator}}">
+    <ContentPage.Content>
+        <Grid BackgroundColor="White" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="0" Source="sampleloginimage.png" HeightRequest="70" VerticalOptions="StartAndExpand"/>
+                <Entry Grid.Row="1" Placeholder="Username" Style="{StaticResource LoginEntryStyle}" Text="{Binding Username}"/>
+                <Entry Grid.Row="2" Placeholder="Password" Style="{StaticResource LoginEntryStyle}" Text="{Binding Password}" IsPassword="True"/>
+                <Label Grid.Row="3" Text="{Binding Message}" FontSize="Small" TextColor="#FF5454">
+                    <Label.Triggers>
+                        <DataTrigger Binding="{Binding Message}" Value="" TargetType="Label">
+                            <Setter Property="IsVisible" Value="False"/>
+                        </DataTrigger>
+                    </Label.Triggers>
+                </Label>
+                <Grid Grid.Row="4" HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Text="Login" Style="{StaticResource LoginButtonStyle}" Command="{Binding LoginCommand}"/>
+                    <Button Grid.Column="2" Text="Reset" Style="{StaticResource ResetButtonStyle}" Command="{Binding ResetCommand}"/>
+                </Grid>
+                <Label Grid.Row="5" Text="Forgot Password?" Style="{StaticResource LableStyle}" HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding OpenForgotPasswordPageCommand}"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Grid Grid.Row="6" VerticalOptions="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bababa" VerticalOptions="Center"/>
+                    <Label Grid.Column="2" Text="Or" VerticalOptions="Center"/>
+                    <Label Grid.Column="4" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bababa" VerticalOptions="Center"/>
+                </Grid>
+                <StackLayout Grid.Row="7" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                    <Image Source="facebook.png" HeightRequest="25" WidthRequest="25"/>
+                    <Label Text="Log In with Facebook" FontSize="Medium" VerticalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginWithFacebookCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </Grid>
+            <StackLayout Grid.Row="1" VerticalOptions="End">
+                <Label HeightRequest="1" BackgroundColor="#E3E3E3"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="New to QuizUp?" FontSize="Small"/>
+                    <Label Text="Sign Up." Style="{StaticResource LableStyle}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenSignUpPageCommand}"></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

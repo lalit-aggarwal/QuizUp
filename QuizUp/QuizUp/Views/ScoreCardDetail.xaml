@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:common="clr-namespace:QuizUp.Common"
+             x:Class="QuizUp.Views.ScoreCardDetail">
+    <TabbedPage.Resources>
+        <common:NotConverter x:Key="NotConverter"/>
+    </TabbedPage.Resources>
+    <TabbedPage.Children>
+        <ContentPage Title="Last Attempt"
+             BindingContext="{Binding LastAttemptTabbedDetailViewModel, Source={StaticResource ViewModelLocator}}">
+            <ContentPage.Content>
+                <Grid>
+                    <ScrollView BackgroundColor="White" IsVisible="{Binding IsResultsAvailable}">
+                        <StackLayout>
+                            <charts:ChartView HeightRequest="150" Chart="{Binding AttemptsChartView}" />
+                            <Label HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bababa" VerticalOptions="End"/>
+                            <charts:ChartView HeightRequest="150" Chart="{Binding AttemptedQuestionChartView}" />
+                            <Label HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bababa" VerticalOptions="End"/>
+                            <charts:ChartView HeightRequest="150" Chart="{Binding AnswersScoreChartView}" />
+                        </StackLayout>
+                    </ScrollView>
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Scorecard Not Available" IsVisible="{Binding IsResultsAvailable, Converter={StaticResource NotConverter}}"/>
+                </Grid>
+            </ContentPage.Content>
+        </ContentPage>
+        <ContentPage Title="All Attempts"
+             BindingContext="{Binding AllAttemptTabbedDetailViewModel, Source={StaticResource ViewModelLocator}}">
+            <ContentPage.Content>
+                <Grid>
+                    <ScrollView BackgroundColor="White" IsVisible="{Binding IsResultsAvailable}">
+                        <StackLayout>
+                            <charts:ChartView HeightRequest="150" Chart="{Binding AttemptsChartView}" />
+                            <Label HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bababa" VerticalOptions="End"/>
+                            <charts:ChartView HeightRequest="150" Chart="{Binding AttemptedQuestionChartView}" />
+                            <Label HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#bababa" VerticalOptions="End"/>
+                            <charts:ChartView HeightRequest="150" Chart="{Binding AnswersScoreChartView}" />
+                        </StackLayout>
+                    </ScrollView>
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="Scorecard Not Available" IsVisible="{Binding IsResultsAvailable, Converter={StaticResource NotConverter}}"/>
+                </Grid>
+            </ContentPage.Content>
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage>

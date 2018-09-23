@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizUp.Views.MasterHomeDetail"
+             Title="Home"
+             BindingContext="{Binding MasterHomeDetailViewModel, Source={StaticResource ViewModelLocator}}">
+    <StackLayout BackgroundColor="White">
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Row="1" Source="quizup.png" HeightRequest="200" WidthRequest="200" VerticalOptions="Center"/>
+            <StackLayout Grid.Row="3">
+                <Label Grid.Row="3" Text="Welcome to QuizUp!" Style="{StaticResource LargeLableStyle}"/>
+                <Label Text="Get ready to evaluate yourself." Style="{StaticResource SmallLableStyle}" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
+            <Image Grid.Row="5" Source="go.png" HeightRequest="100" WidthRequest="100" VerticalOptions="Center">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding StartQuizCommand}"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Grid>
+    </StackLayout>
+</ContentPage>

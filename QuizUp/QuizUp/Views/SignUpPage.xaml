@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="QuizUp.Views.SignUpPage" Title="SignUp"
+             BindingContext="{Binding SignUpViewModel, Source={StaticResource ViewModelLocator}}">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="White">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Image Grid.Row="0" Source="signup.png" HeightRequest="70" VerticalOptions="StartAndExpand"/>
+                    <Entry Grid.Row="1" Placeholder="Full Name" Style="{StaticResource LoginEntryStyle}" Text="{Binding FullName}"/>
+                    <Entry Grid.Row="2" Placeholder="Username" Style="{StaticResource LoginEntryStyle}" Text="{Binding Username}"/>
+                    <Entry Grid.Row="3" Placeholder="Password" Style="{StaticResource LoginEntryStyle}" Text="{Binding Password}" IsPassword="True"/>
+                    <StackLayout Orientation="Horizontal" Grid.Row="4" HorizontalOptions="End">
+                        <Button Text="Submit" Style="{StaticResource LoginButtonStyle}" Command="{Binding SubmitCommand}"/>
+                        <Button Text="Reset" Style="{StaticResource ResetButtonStyle}" Command="{Binding ResetCommand}"/>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
